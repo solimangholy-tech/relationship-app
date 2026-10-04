@@ -1,0 +1,6 @@
+{
+  "appId": "com.relationship.app",
+  "appName": "Relationship",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

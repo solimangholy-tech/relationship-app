@@ -1,0 +1,42 @@
+بناء الـ APK أوتوماتيك عن طريق GitHub (من غير ما تثبت أي حاجة على جهازك)
+================================================================
+
+الخطوات:
+
+1) اعمل حساب مجاني على github.com لو معندكش.
+
+2) اعمل Repository جديد (زرار + فوق يمين → New repository).
+   - الاسم: relationship-app (أو أي اسم)
+   - خليه Public أو Private، الاتنين شغالين.
+
+3) ارفع كل محتويات المجلد ده (بما فيها مجلد .github اللي جواه
+   الملف build-apk.yml) على الـ Repository. أسهل طريقة:
+   - من صفحة الـ Repository الفاضية، دوس "uploading an existing file"
+     واسحب كل الملفات والمجلدات.
+   - أو لو بتستخدم git من جهازك:
+       git init
+       git add .
+       git commit -m "relationship app"
+       git branch -M main
+       git remote add origin https://github.com/USERNAME/relationship-app.git
+       git push -u origin main
+
+4) أول ما ترفع، GitHub هيشغّل البناء تلقائيًا (لأن الملف فيه
+   "on: push"). تابع التقدم من تبويب "Actions" فوق في صفحة الـ
+   Repository.
+
+5) لما يخلص (علامة ✅ خضرا)، ادخل على الـ run اللي خلص، هتلاقي
+   تحت "Artifacts" ملف اسمه relationship-debug-apk — ده ملف
+   مضغوط جواه الـ APK. نزّله وفُكّه، وهتلاقي app-debug.apk
+   جاهز تركّبه على أي موبايل أندرويد (لازم تسمح بـ "تثبيت من
+   مصادر غير معروفة" في إعدادات الموبايل أول مرة).
+
+ملاحظات:
+- البناء ده بياخد من 3 لـ 6 دقايق تقريبًا كل مرة.
+- لو عايز تبنيه يدوي بدون رفع كود جديد: من تبويب Actions، اختار
+  "Build Android APK" من القايمة الشمال، ودوس "Run workflow".
+- ده APK تجريبي (debug) للتجربة والتركيب المباشر بس، مش موقّع
+  للنشر على Google Play. النشر الرسمي محتاج خطوة توقيع إضافية
+  (release signing) — لو وصلت للمرحلة دي قولي وأظبطلك الملف.
+- أي تعديل تعمله بعد كده على relationship.html، انسخه داخل
+  www/index.html في نفس المشروع وارفعه تاني، والبناء هيتكرر لوحده.
